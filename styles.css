@@ -1,0 +1,289 @@
+body {
+  background-image: url("media/underwater.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: transparent;
+  background-blend-mode: multiply;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  font-family: "IM Fell Great Primer", serif;
+  color: white;
+  letter-spacing: 2px;
+  font-size: 50px;
+  transition: background-color 4s ease, background 3s ease;
+}
+
+#slide {
+  width: 90vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CSS */
+button {
+  background-color: rgba(240, 240, 240, 0.5);
+  border-radius: 100px;
+  box-shadow: rgba(44, 48, 186, 0.2) 0 -25px 18px -14px inset,
+    rgba(44, 48, 186, 0.2) 0 1px 2px, rgba(44, 48, 186, 0.2) 0 2px 4px,
+    rgba(44, 48, 186, 0.2) 0 4px 8px, rgba(44, 48, 186, 0.2) 0 8px 16px,
+    rgba(44, 48, 186, 0.2) 0 16px 32px;
+  color: rgb(21, 58, 100);
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button,
+.carousel-dot {
+  box-shadow: #5873b859 0 -25px 18px -14px inset, #5873b859 0 1px 2px,
+    #5873b859 0 2px 4px, #5873b859 0 4px 8px, #5873b859 0 8px 16px,
+    #5873b859 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+#carousel {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.carousel-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* bleeding */
+.hover-word-bleeding {
+  position: relative;
+  display: inline-block;
+  transition: color 4s ease;
+}
+
+.hover-word-bleeding:hover {
+  color: rgb(108, 5, 5);
+  cursor: url("http://www.rw-designer.com/cursor-extern.php?id=1263"), auto;
+}
+
+/* OOZ rocket effect */
+.strike:hover {
+  cursor: url("http://www.rw-designer.com/cursor-extern.php?id=108553"), auto;
+}
+.page-strike {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 0;
+  height: 5px;
+  border-radius: 5px;
+  background: #f5afb7;
+  transform: rotate(-26deg);
+  filter: blur(2px);
+  transform-origin: right center;
+  z-index: 1000;
+  animation: strike-full 8s linear forwards;
+}
+
+@keyframes strike-full {
+  0% {
+    width: 0;
+    height: 2px;
+  }
+  100% {
+    width: 200vw;
+    height: 25px;
+  }
+}
+
+/* touch */
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+  85% {
+    transform: rotate(5deg);
+  }
+  95% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.hover-word-touch {
+  display: inline-block;
+  animation: wiggle 1.5s infinite;
+}
+
+.hover-word-touch:hover {
+  cursor: pointer;
+}
+
+/* swimming css effect */
+.shift-letter {
+  display: inline-block;
+  transition: transform 1s ease;
+  padding: 5px;
+}
+
+.shift-letter.even:hover {
+  transform: translateY(-70px);
+}
+
+.shift-letter.odd:hover {
+  transform: translateY(70px);
+}
+
+/* rise and fall effect */
+.fall-letter {
+  display: inline-block;
+  transition: transform 5s ease;
+  padding: 5px;
+}
+
+.rise-letter {
+  display: inline-block;
+  transition: transform 5s ease;
+  padding: 5px;
+}
+
+.fall-letter:hover,
+.rise-letter:hover {
+  cursor: pointer;
+}
+
+.flashlight {
+  position: fixed;
+  pointer-events: none;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(0, 0, 0, 0.8) 80%
+  );
+  mix-blend-mode: lighten;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+#lyric {
+  transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
+}
+
+#lyric.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(4px);
+}
+
+#lyric.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.bubble {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fff,
+    rgba(173, 216, 230, 0.4)
+  );
+  opacity: 0.8;
+  animation: bubble-float 2s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes bubble-float {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-60px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+#swimmer-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+#swimmer-layer.hidden {
+  opacity: 0;
+  filter: blur(6px);
+}
+
+.swimmer {
+  position: absolute;
+  width: 60px;
+  pointer-events: none;
+  animation: swim-left linear forwards;
+  opacity: 0.85;
+
+  filter: brightness(0) contrast(100%);
+}
+
+@keyframes swim-left {
+  from {
+    transform: translateX(110vw);
+  }
+  to {
+    transform: translateX(-150px);
+  }
+}
