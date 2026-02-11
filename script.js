@@ -175,6 +175,9 @@ function triggerPageStrike() {
   strike.className = "page-strike";
   document.body.appendChild(strike);
 
+  document.body.classList.add("impact");
+  setTimeout(() => document.body.classList.remove("impact"), 8000);
+
   strike.addEventListener("animationend", () => strike.remove());
 }
 
@@ -191,7 +194,7 @@ function spawnSwimmer() {
   swimmer.className = "swimmer";
 
   const y = Math.random() * (window.innerHeight - 100);
-  const duration = 12 + Math.random() * 8;
+  const duration = 6 + Math.random() * 8;
 
   swimmer.style.top = `${y}px`;
   swimmer.style.animationDuration = `${duration}s`;
@@ -205,7 +208,7 @@ function spawnSwimmer() {
 
 function startSwimmers() {
   if (!window.swimmerInterval) {
-    window.swimmerInterval = setInterval(spawnSwimmer, 2000);
+    window.swimmerInterval = setInterval(spawnSwimmer, 3000);
   }
 }
 
@@ -238,7 +241,7 @@ function attachHoverEffects() {
     });
   });
   document.querySelectorAll(".strike").forEach((word) => {
-    word.addEventListener("mouseenter", () => {
+    word.addEventListener("click", () => {
       triggerPageStrike();
     });
   });
